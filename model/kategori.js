@@ -1,8 +1,9 @@
-const bookshelf = require('../bookshelf')
+const modelBase = require('../bookshelf')
 
-const Kategori = bookshelf.Model.extend({
+const Kategori = modelBase.extend({
   idAttribute: 'id_kategori',
-  tableName: 'kategori'
+  tableName: 'kategori',
+  hasTimestamps: false
 })
 
-module.exports = bookshelf.model('Kategori', Kategori)
+module.exports = Kategori

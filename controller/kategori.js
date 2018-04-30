@@ -10,7 +10,7 @@ const controller = {
     //   })
 
     try {
-      let result = await kategori.fetchAll()
+      let result = await kategori.findAll()
       res.json(result)
     } catch (err) {
       console.log(err.message)
@@ -29,7 +29,7 @@ const controller = {
     //   })
 
     try {
-      let result = await kategori.where({id_kategori: id}).fetch()
+      let result = await kategori.findById(id)
       res.json(result)
     } catch (err) {
       console.log(err.message)
@@ -47,7 +47,7 @@ const controller = {
     //     res.status(500).json({success: false})
     //   })
     try {
-      let result = await new kategori(data).save()
+      let result = await kategori.create(data)
       res.json(result.attributes)
     } catch (err) {
       console.log(err.message)
@@ -69,7 +69,7 @@ const controller = {
     //     res.status(500).json({success: false})
     //   })
     try {
-      let result = await new kategori({id_kategori: id, ...data}).save()
+      let result = await kategori.update(data, {id})
       res.json(result.attributes)
     } catch (err) {
       console.log(err.message)
@@ -86,7 +86,7 @@ const controller = {
     //     res.status(500).json({success: false})
     //   })
     try {
-      await new kategori({id_kategori: id}).destroy()
+      await kategori.destroy({id})
       res.json({success: true})
     } catch (err) {
       console.log(err.message)

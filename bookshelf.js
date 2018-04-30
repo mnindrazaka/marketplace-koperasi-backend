@@ -1,6 +1,7 @@
 const knex = require('knex') (require('./knexfile'))
 const bookshelf = require('bookshelf')(knex)
+const modelBase = require('bookshelf-modelbase')(bookshelf)
 
-bookshelf.plugin('registry')
+bookshelf.plugin(require('bookshelf-modelbase').pluggable);
 
-module.exports = bookshelf
+module.exports = modelBase
