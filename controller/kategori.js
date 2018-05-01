@@ -3,7 +3,7 @@ const kategori = require('../model/kategori')
 const controller = {
   index: async (req, res) => {
     try {
-      let result = await kategori.findAll()
+      let result = await kategori.findAll({}, {withRelated: ['produk']})
       res.json(result)
     } catch (err) {
       console.log(err.message)
@@ -14,7 +14,7 @@ const controller = {
   show: async (req, res) => {
     const {id} = req.params
     try {
-      let result = await kategori.findById(id)
+      let result = await kategori.findById(id, {withRelated: ['produk']})
       res.json(result)
     } catch (err) {
       console.log(err.message)
