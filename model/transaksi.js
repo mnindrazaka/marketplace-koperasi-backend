@@ -1,13 +1,16 @@
 const modelBase = require('../bookshelf')
 const Joi = require('joi')
 const pengguna = require('./pengguna')
+const kurir = require('./kurir')
 
 const Transaksi = modelBase.extend({
   idAttribute: 'id_transaksi',
   tableName: 'transaksi',
-  hasTimestamps: false,
   pengguna: function () {
     return this.belongsTo(pengguna, 'id_pengguna')
+  },
+  kurir: function () {
+    return this.belongsTo(kurir, 'id_kurir')
   },
   validate: {
     total_bayar: Joi.number(),
